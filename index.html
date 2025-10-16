@@ -315,67 +315,184 @@
             background: var(--primary);
         }
         
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
-        }
-        
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        th {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-        
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .metric-card {
+        /* Montador de Cardápio */
+        .menu-builder {
             background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+        
+        .menu-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .menu-tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .menu-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        
+        .menu-categories {
+            display: none;
+        }
+        
+        .menu-categories.active {
+            display: block;
+        }
+        
+        .category-title {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        
+        .food-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .food-option {
+            background: var(--light-gray);
+            border: 2px solid transparent;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .food-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .food-option.selected {
+            border-color: var(--primary);
+            background: rgba(46, 139, 87, 0.1);
+        }
+        
+        .food-option.vegan {
+            position: relative;
+        }
+        
+        .food-option.vegan::after {
+            content: "🌱";
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 0.8rem;
+        }
+        
+        .food-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 10px;
+            background: var(--light);
+        }
+        
+        .food-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .food-calories {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .menu-preview {
+            background: var(--light-gray);
+            border-radius: 8px;
             padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .preview-title {
+            color: var(--primary);
+            margin-bottom: 15px;
             text-align: center;
         }
         
-        .metric-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 10px 0;
+        .selected-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
         }
         
-        .metric-label {
-            color: var(--gray);
+        .selected-item {
+            background: white;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
             font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        .chart-container {
+        .nutrition-summary {
+            background: white;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .nutrition-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 5px 0;
+        }
+        
+        .reset-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        
+        .reset-btn:hover {
+            background: #e55a2b;
+        }
+        
+        /* Montador de Rótulo */
+        .label-builder {
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             padding: 30px;
-            margin: 30px 0;
+            margin: 0 auto;
+            max-width: 1000px;
         }
         
-        /* Form Styles */
+        .label-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
         .form-group {
             margin-bottom: 20px;
         }
@@ -403,6 +520,111 @@
         textarea.form-control {
             min-height: 120px;
             resize: vertical;
+        }
+        
+        .nutrition-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .nutrition-input {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nutrition-input label {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .label-preview {
+            background: white;
+            border: 2px dashed var(--primary);
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 30px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .label-header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 15px;
+        }
+        
+        .label-product-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .label-company {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        .label-nutrition-facts {
+            margin-top: 20px;
+        }
+        
+        .nutrition-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-bottom: 2px solid var(--dark);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .nutrition-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .nutrition-item:last-child {
+            border-bottom: none;
+        }
+        
+        .nutrition-amount {
+            font-weight: bold;
+        }
+        
+        .label-ingredients {
+            margin-top: 20px;
+        }
+        
+        .ingredients-title {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .ingredients-list {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .generate-btn {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .generate-btn:hover {
+            background: var(--primary-dark);
         }
         
         /* Chat Widget */
@@ -627,6 +849,22 @@
                 width: 40px;
                 height: 40px;
             }
+            
+            .menu-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .food-options {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .label-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .nutrition-inputs {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -640,9 +878,9 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#diagnostico">Diagnóstico</a></li>
                     <li><a href="#produtos">Produtos</a></li>
-                    <li><a href="#metricas">Métricas</a></li>
+                    <li><a href="#cardapio">Monte seu Cardápio</a></li>
+                    <li><a href="#rotulo">Monte seu Rótulo</a></li>
                     <li><a href="#orçamento">Orçamento</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
@@ -679,35 +917,6 @@
                     <li>Rotulagem nutricional</li>
                     <li>Ficha técnica de preparo</li>
                 </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="diagnostico" style="background-color: var(--light-gray);">
-        <div class="container">
-            <div class="section-title">
-                <h2>Diagnóstico</h2>
-                <p>Principais desafios identificados na estrutura comercial e de marketing</p>
-            </div>
-            <div class="grid">
-                <div class="card">
-                    <h3>Estrutura Comercial</h3>
-                    <p>Com a equipe de nutricionistas e vendedores em crescimento, a estrutura comercial não está padronizada. A falta de um funil de vendas claro e de scripts definidos resulta em inconsistência na abordagem com leads e prejudica o controle da qualidade na entrega dos serviços.</p>
-                </div>
-                <div class="card">
-                    <h3>Marketing Digital</h3>
-                    <p>A NutriMetrics realiza investimentos significativos em marketing digital, mas sofre para correlacionar o investimento ao resultado (ROI). A coleta e análise dos indicadores digitais são precárias, levando a decisões pouco informadas e desperdício de recursos.</p>
-                </div>
-                <div class="card">
-                    <h3>Desafios Específicos</h3>
-                    <ul>
-                        <li>Sensibilidade ao preço por parte dos leads</li>
-                        <li>Problemas de comunicação (ghosting)</li>
-                        <li>Lentidão na conversão</li>
-                        <li>Qualidade dos leads</li>
-                        <li>Dificuldade em operar Meta Ads</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>
@@ -777,7 +986,7 @@
                     
                     <!-- Produto 4 -->
                     <div class="product-slide">
-                        <div class="product-image" style="background-image: url('assets/images/products/ficha-tecnica.jpeg')"></div>
+                        <div class="product-image" style="background-image: url('assets/images/ficha-tecnica.jpeg')"></div>
                         <div class="product-content">
                             <h3>Ficha Técnica de Preparo</h3>
                             <p>Desenvolvimento de fichas técnicas padronizadas para restaurantes e serviços de alimentação.</p>
@@ -808,416 +1017,736 @@
         </div>
     </section>
 
-    <section id="metricas" style="background-color: var(--light-gray);">
+    <section id="cardapio" style="background-color: var(--light-gray);">
         <div class="container">
             <div class="section-title">
-                <h2>Métricas de Marketing Digital</h2>
-                <p>Análise dos indicadores de performance dos últimos meses</p>
+                <h2>Monte seu Cardápio</h2>
+                <p>Crie um cardápio personalizado selecionando suas opções preferidas</p>
             </div>
             
-            <div class="chart-container">
-                <h3>Indicadores Mensais</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Mês</th>
-                            <th>Investimento (R$)</th>
-                            <th>Impressões</th>
-                            <th>Cliques</th>
-                            <th>CPC (R$)</th>
-                            <th>CTR (%)</th>
-                            <th>Leads</th>
-                            <th>CPL (R$)</th>
-                            <th>Conversão (%)</th>
-                            <th>ROI (%)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Janeiro</td>
-                            <td>5.000</td>
-                            <td>150.000</td>
-                            <td>4.500</td>
-                            <td>1,11</td>
-                            <td>3,00</td>
-                            <td>120</td>
-                            <td>41,67</td>
-                            <td>2,67</td>
-                            <td>60,00</td>
-                        </tr>
-                        <tr>
-                            <td>Fevereiro</td>
-                            <td>6.500</td>
-                            <td>180.000</td>
-                            <td>5.500</td>
-                            <td>1,18</td>
-                            <td>3,06</td>
-                            <td>150</td>
-                            <td>43,33</td>
-                            <td>2,73</td>
-                            <td>61,54</td>
-                        </tr>
-                        <tr>
-                            <td>Março</td>
-                            <td>8.000</td>
-                            <td>200.000</td>
-                            <td>7.000</td>
-                            <td>1,14</td>
-                            <td>3,50</td>
-                            <td>180</td>
-                            <td>44,44</td>
-                            <td>2,57</td>
-                            <td>62,50</td>
-                        </tr>
-                        <tr>
-                            <td>Abril</td>
-                            <td>9.500</td>
-                            <td>210.000</td>
-                            <td>7.800</td>
-                            <td>1,22</td>
-                            <td>3,71</td>
-                            <td>210</td>
-                            <td>45,24</td>
-                            <td>2,69</td>
-                            <td>52,63</td>
-                        </tr>
-                        <tr>
-                            <td>Maio</td>
-                            <td>11.000</td>
-                            <td>220.000</td>
-                            <td>8.500</td>
-                            <td>1,29</td>
-                            <td>3,86</td>
-                            <td>230</td>
-                            <td>47,83</td>
-                            <td>2,71</td>
-                            <td>40,91</td>
-                        </tr>
-                        <tr>
-                            <td>Junho</td>
-                            <td>10.500</td>
-                            <td>215.000</td>
-                            <td>8.200</td>
-                            <td>1,28</td>
-                            <td>3,81</td>
-                            <td>225</td>
-                            <td>46,67</td>
-                            <td>2,74</td>
-                            <td>42,86</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-value">R$ 8.083</div>
-                    <div class="metric-label">Investimento Médio Mensal</div>
+            <div class="menu-builder">
+                <div class="menu-tabs">
+                    <button class="menu-tab active" data-category="cafe">Café da Manhã</button>
+                    <button class="menu-tab" data-category="almoco">Almoço</button>
+                    <button class="menu-tab" data-category="jantar">Jantar</button>
+                    <button class="menu-tab" data-category="lanches">Lanches</button>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value">186</div>
-                    <div class="metric-label">Leads Médios por Mês</div>
+                
+                <!-- Café da Manhã -->
+                <div class="menu-categories active" id="cafe">
+                    <h3 class="category-title">Café da Manhã</h3>
+                    <div class="food-options">
+                        <div class="food-option vegan" data-name="Aveia com Frutas" data-calories="250">
+                            <div class="food-image" style="background-image: url('assets/images/foods/aveia-frutas.jpeg')"></div>
+                            <div class="food-name">Aveia com Frutas</div>
+                            <div class="food-calories">250 kcal</div>
+                        </div>
+                        <div class="food-option vegan" data-name="Pão Integral com Abacate" data-calories="320">
+                            <div class="food-image" style="background-image: url('assets/images/foods/pao-abacate.jpeg')"></div>
+                            <div class="food-name">Pão Integral com Abacate</div>
+                            <div class="food-calories">320 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Omelete com Queijo" data-calories="280">
+                            <div class="food-image" style="background-image: url('assets/images/foods/omelete-queijo.jpeg')"></div>
+                            <div class="food-name">Omelete com Queijo</div>
+                            <div class="food-calories">280 kcal</div>
+                        </div>
+                        <div class="food-option vegan" data-name="Smoothie Verde" data-calories="180">
+                            <div class="food-image" style="background-image: url('assets/images/foods/smoothie-verde.jpeg')"></div>
+                            <div class="food-name">Smoothie Verde</div>
+                            <div class="food-calories">180 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Iogurte com Granola" data-calories="210">
+                            <div class="food-image" style="background-image: url('assets/images/foods/iogurte-granola.jpeg')"></div>
+                            <div class="food-name">Iogurte com Granola</div>
+                            <div class="food-calories">210 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Ovos Mexidos com Bacon" data-calories="350">
+                            <div class="food-image" style="background-image: url('assets/images/foods/ovos-bacon.jpeg')"></div>
+                            <div class="food-name">Ovos Mexidos com Bacon</div>
+                            <div class="food-calories">350 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Panqueca com Mel" data-calories="380">
+                            <div class="food-image" style="background-image: url('assets/images/foods/panqueca-mel.jpeg')"></div>
+                            <div class="food-name">Panqueca com Mel</div>
+                            <div class="food-calories">380 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Torrada com Cream Cheese" data-calories="290">
+                            <div class="food-image" style="background-image: url('assets/images/foods/torrada-creamcheese.jpeg')"></div>
+                            <div class="food-name">Torrada com Cream Cheese</div>
+                            <div class="food-calories">290 kcal</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value">R$ 44,86</div>
-                    <div class="metric-label">Custo Médio por Lead</div>
+                
+                <!-- Almoço -->
+                <div class="menu-categories" id="almoco">
+                    <h3 class="category-title">Almoço</h3>
+                    <div class="food-options">
+                        <div class="food-option" data-name="Frango Grelhado com Legumes" data-calories="420">
+                            <div class="food-image" style="background-image: url('assets/images/foods/frango-legumes.jpeg')"></div>
+                            <div class="food-name">Frango Grelhado com Legumes</div>
+                            <div class="food-calories">420 kcal</div>
+                        </div>
+                        <div class="food-option vegan" data-name="Quinoa com Vegetais" data-calories="380">
+                            <div class="food-image" style="background-image: url('assets/images/foods/quinoa-vegetais.jpeg')"></div>
+                            <div class="food-name">Quinoa com Vegetais</div>
+                            <div class="food-calories">380 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Salmão com Aspargos" data-calories="450">
+                            <div class="food-image" style="background-image: url('assets/images/foods/salmao-aspargos.jpeg')"></div>
+                            <div class="food-name">Salmão com Aspargos</div>
+                            <div class="food-calories">450 kcal</div>
+                        </div>
+                        <div class="food-option vegan" data-name="Lentilha com Arroz Integral" data-calories="350">
+                            <div class="food-image" style="background-image: url('assets/images/foods/lentilha-arroz.jpeg')"></div>
+                            <div class="food-name">Lentilha com Arroz Integral</div>
+                            <div class="food-calories">350 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Bife à Parmegiana" data-calories="520">
+                            <div class="food-image" style="background-image: url('assets/images/foods/bife-parmegiana.jpeg')"></div>
+                            <div class="food-name">Bife à Parmegiana</div>
+                            <div class="food-calories">520 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Massa Integral com Pesto" data-calories="480">
+                            <div class="food-image" style="background-image: url('assets/images/foods/massa-pesto.jpeg')"></div>
+                            <div class="food-name">Massa Integral com Pesto</div>
+                            <div class="food-calories">480 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Risotto de Cogumelos" data-calories="410">
+                            <div class="food-image" style="background-image: url('assets/images/foods/risotto-cogumelos.jpeg')"></div>
+                            <div class="food-name">Risotto de Cogumelos</div>
+                            <div class="food-calories">410 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Wrap de Frango" data-calories="390">
+                            <div class="food-image" style="background-image: url('assets/images/foods/wrap-frango.jpeg')"></div>
+                            <div class="food-name">Wrap de Frango</div>
+                            <div class="food-calories">390 kcal</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value">53,24%</div>
-                    <div class="metric-label">ROI Médio</div>
+                
+                <!-- Jantar -->
+                <div class="menu-categories" id="jantar">
+                    <h3 class="category-title">Jantar</h3>
+                    <div class="food-options">
+                        <div class="food-option" data-name="Sopa de Legumes" data-calories="280">
+                            <div class="food-image" style="background-image: url('assets/images/foods/sopa-legumes.jpeg')"></div>
+                            <div class="food-name">Sopa de Legumes</div>
+                            <div class="food-calories">280 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Salada Caesar" data-calories="320">
+                            <div class="food-image" style="background-image: url('assets/images/foods/salada-caesar.jpeg')"></div>
+                            <div class="food-name">Salada Caesar</div>
+                            <div class="food-calories">320 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Peixe Grelhado com Purê" data-calories="380">
+                            <div class="food-image" style="background-image: url('assets/images/foods/peixe-pure.jpeg')"></div>
+                            <div class="food-name">Peixe Grelhado com Purê</div>
+                            <div class="food-calories">380 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Omelete de Espinafre" data-calories="250">
+                            <div class="food-image" style="background-image: url('assets/images/foods/omelete-espinafre.jpeg')"></div>
+                            <div class="food-name">Omelete de Espinafre</div>
+                            <div class="food-calories">250 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Frango ao Curry" data-calories="350">
+                            <div class="food-image" style="background-image: url('assets/images/foods/frango-curry.jpeg')"></div>
+                            <div class="food-name">Frango ao Curry</div>
+                            <div class="food-calories">350 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Tapioca com Queijo" data-calories="290">
+                            <div class="food-image" style="background-image: url('assets/images/foods/tapioca-queijo.jpeg')"></div>
+                            <div class="food-name">Tapioca com Queijo</div>
+                            <div class="food-calories">290 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Creme de Abóbora" data-calories="220">
+                            <div class="food-image" style="background-image: url('assets/images/foods/creme-abobora.jpeg')"></div>
+                            <div class="food-name">Creme de Abóbora</div>
+                            <div class="food-calories">220 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Sanduíche Natural" data-calories="310">
+                            <div class="food-image" style="background-image: url('assets/images/foods/sanduiche-natural.jpeg')"></div>
+                            <div class="food-name">Sanduíche Natural</div>
+                            <div class="food-calories">310 kcal</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lanches -->
+                <div class="menu-categories" id="lanches">
+                    <h3 class="category-title">Lanches</h3>
+                    <div class="food-options">
+                        <div class="food-option vegan" data-name="Maçã com Pasta de Amendoim" data-calories="180">
+                            <div class="food-image" style="background-image: url('assets/images/foods/maca-pasta-amendoim.jpeg')"></div>
+                            <div class="food-name">Maçã com Pasta de Amendoim</div>
+                            <div class="food-calories">180 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Iogurte Grego" data-calories="150">
+                            <div class="food-image" style="background-image: url('assets/images/foods/iogurte-grego.jpeg')"></div>
+                            <div class="food-name">Iogurte Grego</div>
+                            <div class="food-calories">150 kcal</div>
+                        </div>
+                        <div class="food-option vegan" data-name="Mix de Castanhas" data-calories="200">
+                            <div class="food-image" style="background-image: url('assets/images/foods/mix-castanhas.jpeg')"></div>
+                            <div class="food-name">Mix de Castanhas</div>
+                            <div class="food-calories">200 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Barrinha de Cereal" data-calories="120">
+                            <div class="food-image" style="background-image: url('assets/images/foods/barra-cereal.jpeg')"></div>
+                            <div class="food-name">Barrinha de Cereal</div>
+                            <div class="food-calories">120 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Queijo Cottage com Pêssego" data-calories="170">
+                            <div class="food-image" style="background-image: url('assets/images/foods/queijo-pessego.jpeg')"></div>
+                            <div class="food-name">Queijo Cottage com Pêssego</div>
+                            <div class="food-calories">170 kcal</div>
+                        </div>
+                        <div class="food-option vegan" data-name="Hummus com Palitos de Legumes" data-calories="160">
+                            <div class="food-image" style="background-image: url('assets/images/foods/hummus-legumes.jpeg')"></div>
+                            <div class="food-name">Hummus com Palitos de Legumes</div>
+                            <div class="food-calories">160 kcal</div>
+                        </div>
+                        <div class="food-option" data-name="Ovo Cozido" data-calories="80">
+                            <div class="food-image" style="background-image: url('assets/images/foods/ovo-cozido.jpeg')"></div>
+                            <div class="food-name">Ovo Cozido</div>
+                            <div class="food-calories">80 kcal</div>
+                        </div>
+                        <div class="food-option vegan" data-name="Smoothie de Banana" data-calories="190">
+                            <div class="food-image" style="background-image: url('assets/images/foods/smoothie-banana.jpeg')"></div>
+                            <div class="food-name">Smoothie de Banana</div>
+                            <div class="food-calories">190 kcal</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-preview">
+                    <h3 class="preview-title">Seu Cardápio do Dia</h3>
+                    <div class="selected-items" id="selected-items">
+                        <!-- Itens selecionados aparecerão aqui -->
+                    </div>
+                    <div class="nutrition-summary">
+                        <p>Total de Calorias:</p>
+                        <div class="nutrition-value" id="total-calories">0 kcal</div>
+                        <button class="reset-btn" id="reset-menu">Reiniciar Cardápio</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="orçamento">
+    <section id="rotulo">
         <div class="container">
             <div class="section-title">
-                <h2>Solicite um Orçamento</h2>
+                <h2>Monte seu Rótulo Nutricional</h2>
+                <p>Crie um rótulo nutricional personalizado para seu produto alimentício</p>
+            </div>
+            
+            <div class="label-builder">
+                <div class="label-form">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="product-name">Nome do Produto</label>
+                            <input type="text" id="product-name" class="form-control" placeholder="Ex: Granola Integral">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-brand">Marca</label>
+                            <input type="text" id="product-brand" class="form-control" placeholder="Ex: NutriMetrics">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-weight">Peso Líquido</label>
+                            <input type="text" id="product-weight" class="form-control" placeholder="Ex: 500g">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-ingredients">Ingredientes</label>
+                            <textarea id="product-ingredients" class="form-control" placeholder="Liste os ingredientes em ordem decrescente de quantidade"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-column">
+                        <h3>Informação Nutricional</h3>
+                        <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 20px;">Porção de 100g</p>
+                        
+                        <div class="nutrition-inputs">
+                            <div class="nutrition-input">
+                                <label for="calories">Valor Energético (kcal)</label>
+                                <input type="number" id="calories" class="form-control" min="0" value="0">
+                            </div>
+                            
+                            <div class="nutrition-input">
+                                <label for="carbohydrates">Carboidratos (g)</label>
+                                <input type="number" id="carbohydrates" class="form-control" min="0" value="0" step="0.1">
+                            </div>
+                            
+                            <div class="nutrition-input">
+                                <label for="proteins">Proteínas (g)</label>
+                                <input type="number" id="proteins" class="form-control" min="0" value="0" step="0.1">
+                            </div>
+                            
+                            <div class="nutrition-input">
+                                <label for="fats">Gorduras Totais (g)</label>
+                                <input type="number" id="fats" class="form-control" min="0" value="0" step="0.1">
+                            </div>
+                            
+                            <div class="nutrition-input">
+                                <label for="saturated-fats">Gorduras Saturadas (g)</label>
+                                <input type="number" id="saturated-fats" class="form-control" min="0" value="0" step="0.1">
+                            </div>
+                            
+                            <div class="nutrition-input">
+                                <label for="trans-fats">Gorduras Trans (g)</label>
+                                <input type="number" id="trans-fats" class="form-control" min="0" value="0" step="0.1">
+                            </div>
+                            
+                            <div class="nutrition-input">
+                                <label for="fiber">Fibra Alimentar (g)</label>
+                                <input type="number" id="fiber" class="form-control" min="0" value="0" step="0.1">
+                            </div>
+                            
+                            <div class="nutrition-input">
+                                <label for="sodium">Sódio (mg)</label>
+                                <input type="number" id="sodium" class="form-control" min="0" value="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="generate-btn" id="generate-label">Gerar Rótulo</button>
+                
+                <div class="label-preview" id="label-preview">
+                    <div class="label-header">
+                        <div class="label-product-name" id="preview-product-name">Nome do Produto</div>
+                        <div class="label-company" id="preview-product-brand">Marca</div>
+                        <div class="label-weight" id="preview-product-weight">Peso Líquido</div>
+                    </div>
+                    
+                    <div class="label-nutrition-facts">
+                        <div class="nutrition-title">INFORMAÇÃO NUTRICIONAL</div>
+                        <div class="nutrition-item">
+                            <span>Porção de 100g</span>
+                        </div>
+                        
+                        <div class="nutrition-item">
+                            <span>Valor Energético</span>
+                            <span class="nutrition-amount" id="preview-calories">0 kcal</span>
+                        </div>
+                        
+                        <div class="nutrition-item">
+                            <span>Carboidratos</span>
+                            <span class="nutrition-amount" id="preview-carbohydrates">0g</span>
+                        </div>
+                        
+                        <div class="nutrition-item">
+                            <span>Proteínas</span>
+                            <span class="nutrition-amount" id="preview-proteins">0g</span>
+                        </div>
+                        
+                        <div class="nutrition-item">
+                            <span>Gorduras Totais</span>
+                            <span class="nutrition-amount" id="preview-fats">0g</span>
+                        </div>
+                        
+                        <div class="nutrition-item">
+                            <span>Gorduras Saturadas</span>
+                            <span class="nutrition-amount" id="preview-saturated-fats">0g</span>
+                        </div>
+                        
+                        <div class="nutrition-item">
+                            <span>Gorduras Trans</span>
+                            <span class="nutrition-amount" id="preview-trans-fats">0g</span>
+                        </div>
+                        
+                        <div class="nutrition-item">
+                            <span>Fibra Alimentar</span>
+                            <span class="nutrition-amount" id="preview-fiber">0g</span>
+                        </div>
+                        
+                        <div class="nutrition-item">
+                            <span>Sódio</span>
+                            <span class="nutrition-amount" id="preview-sodium">0mg</span>
+                        </div>
+                    </div>
+                    
+                    <div class="label-ingredients">
+                        <div class="ingredients-title">INGREDIENTES</div>
+                        <div class="ingredients-list" id="preview-ingredients">Lista de ingredientes aparecerá aqui</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="orçamento" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Solicite seu Orçamento</h2>
                 <p>Entre em contato conosco para receber uma proposta personalizada</p>
             </div>
+            
             <div class="card" style="max-width: 800px; margin: 0 auto;">
                 <form id="budget-form">
-                    <div class="grid">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                         <div class="form-group">
                             <label for="name">Nome Completo</label>
                             <input type="text" id="name" class="form-control" required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="email">E-mail</label>
                             <input type="email" id="email" class="form-control" required>
                         </div>
                     </div>
-                    <div class="grid">
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                         <div class="form-group">
                             <label for="phone">Telefone</label>
                             <input type="tel" id="phone" class="form-control" required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="company">Empresa</label>
                             <input type="text" id="company" class="form-control">
                         </div>
                     </div>
-                    <div class="form-group">
+                    
+                    <div class="form-group" style="margin-bottom: 20px;">
                         <label for="service">Serviço de Interesse</label>
                         <select id="service" class="form-control" required>
                             <option value="">Selecione um serviço</option>
-                            <option value="cofre-break">Coffee Break</option>
+                            <option value="coffee-break">Coffee Break</option>
                             <option value="consultoria-rotulagem">Consultoria de Rotulagem</option>
                             <option value="rotulagem-nutricional">Rotulagem Nutricional</option>
                             <option value="ficha-tecnica">Ficha Técnica de Preparo</option>
-                            <option value="outro">Outro</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    
+                    <div class="form-group" style="margin-bottom: 20px;">
                         <label for="message">Mensagem</label>
-                        <textarea id="message" class="form-control" placeholder="Descreva brevemente suas necessidades..."></textarea>
+                        <textarea id="message" class="form-control" rows="5" placeholder="Descreva brevemente suas necessidades..."></textarea>
                     </div>
-                    <button type="submit" class="btn">Enviar Solicitação</button>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Enviar Solicitação</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <section id="equipe">
+    <section id="contato">
         <div class="container">
             <div class="section-title">
-                <h2>A Equipe</h2>
-                <p>Profissionais responsáveis pelo desenvolvimento do projeto</p>
+                <h2>Nossa Equipe</h2>
+                <p>Conheça os profissionais por trás da NutriMetrics</p>
             </div>
+            
             <div class="grid">
                 <div class="team-member">
-                    <img src="assets/images/team/samuel-paes.jpeg" alt="Samuel Paes" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="placeholder-img" style="display:none;">
-                        <i class="fas fa-user"></i>
+                    <div class="placeholder-img">
+                        <i class="fas fa-user-md fa-2x"></i>
                     </div>
-                    <h4>Samuel Paes</h4>
-                    <p>Analista de Tecnologia</p>
+                    <h4>Dra. Ana Silva</h4>
+                    <p>Nutricionista Clínica - CRN 12345</p>
                 </div>
+                
                 <div class="team-member">
-                    <img src="assets/images/team/isabella-goes.jpeg" alt="Isabella Goes" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="placeholder-img" style="display:none;">
-                        <i class="fas fa-user"></i>
+                    <div class="placeholder-img">
+                        <i class="fas fa-user-md fa-2x"></i>
                     </div>
-                    <h4>Isabella Goes</h4>
-                    <p>Analista de Métricas</p>
+                    <h4>Dr. Carlos Mendes</h4>
+                    <p>Especialista em Nutrição Esportiva - CRN 67890</p>
                 </div>
+                
                 <div class="team-member">
-                    <img src="assets/images/team/carlos-mendes.jpeg" alt="Carlos Mendes" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="placeholder-img" style="display:none;">
-                        <i class="fas fa-user"></i>
+                    <div class="placeholder-img">
+                        <i class="fas fa-user-md fa-2x"></i>
                     </div>
-                    <h4>Carlos Mendes</h4>
-                    <p>Especialista em Nutrição</p>
-                </div>
-                <div class="team-member">
-                    <img src="assets/images/team/ana-silva.jpeg" alt="Ana Silva" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="placeholder-img" style="display:none;">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <h4>Ana Silva</h4>
-                    <p>Consultora de Marketing</p>
+                    <h4>Dra. Mariana Costa</h4>
+                    <p>Nutricionista Materno-Infantil - CRN 54321</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contato">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>NutriMetrics</h3>
-                    <p>Startup de consultoria em nutrição e bem-estar, sediada em Belo Horizonte.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Contato</h3>
-                    <p><i class="fas fa-envelope"></i> Email: contato@nutrimetrics.com.br</p>
-                    <p><i class="fas fa-phone"></i> Telefone: (31) 99999-9999</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Endereço: Belo Horizonte, MG</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Links Rápidos</h3>
-                    <a href="#sobre">Sobre</a>
-                    <a href="#diagnostico">Diagnóstico</a>
-                    <a href="#produtos">Produtos</a>
-                    <a href="#metricas">Métricas</a>
-                    <a href="#orçamento">Orçamento</a>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 NutriMetrics. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Chat Widget -->
     <div class="chat-widget">
-        <div class="chat-button" id="chat-toggle">
+        <div class="chat-button" id="chat-button">
             <i class="fas fa-comments"></i>
         </div>
         <div class="chat-container" id="chat-container">
             <div class="chat-header">
                 <h3>Atendimento NutriMetrics</h3>
-                <button class="close-chat" id="close-chat"><i class="fas fa-times"></i></button>
+                <button class="close-chat" id="close-chat">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
             <div class="chat-messages" id="chat-messages">
                 <div class="message bot">
-                    Olá! Como posso ajudar você hoje?
+                    Olá! Sou a assistente virtual da NutriMetrics. Como posso ajudá-lo hoje?
                 </div>
             </div>
             <div class="chat-input">
                 <input type="text" id="chat-input" placeholder="Digite sua mensagem...">
-                <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+                <button id="send-message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
             </div>
         </div>
     </div>
 
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NutriMetrics</h3>
+                    <p>Soluções completas em nutrição e bem-estar para empresas e indivíduos.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <a href="#produtos">Coffee Break</a>
+                    <a href="#produtos">Consultoria de Rotulagem</a>
+                    <a href="#produtos">Rotulagem Nutricional</a>
+                    <a href="#produtos">Ficha Técnica de Preparo</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Belo Horizonte, MG</p>
+                    <p><i class="fas fa-phone"></i> (31) 99999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@nutrimetrics.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 NutriMetrics. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Chat Widget Functionality
-        const chatToggle = document.getElementById('chat-toggle');
-        const chatContainer = document.getElementById('chat-container');
-        const closeChat = document.getElementById('close-chat');
-        const chatMessages = document.getElementById('chat-messages');
-        const chatInput = document.getElementById('chat-input');
-        const sendMessage = document.getElementById('send-message');
-
-        chatToggle.addEventListener('click', () => {
-            chatContainer.style.display = 'flex';
-        });
-
-        closeChat.addEventListener('click', () => {
-            chatContainer.style.display = 'none';
-        });
-
-        sendMessage.addEventListener('click', () => {
-            const message = chatInput.value.trim();
-            if (message) {
-                addMessage(message, 'user');
-                chatInput.value = '';
-                
-                // Simulate bot response after a short delay
-                setTimeout(() => {
-                    addMessage('Obrigado pela sua mensagem! Nossa equipe entrará em contato em breve.', 'bot');
-                }, 1000);
-            }
-        });
-
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage.click();
-            }
-        });
-
-        function addMessage(text, sender) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', sender);
-            messageDiv.textContent = text;
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        // Form Submission
-        document.getElementById('budget-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Obrigado pelo seu interesse! Entraremos em contato em breve com um orçamento personalizado.');
-            this.reset();
-        });
-
-        // Handle missing images
-        document.addEventListener('DOMContentLoaded', function() {
-            const teamImages = document.querySelectorAll('.team-member img');
-            teamImages.forEach(img => {
-                img.addEventListener('error', function() {
-                    this.style.display = 'none';
-                    const placeholder = this.nextElementSibling;
-                    if (placeholder && placeholder.classList.contains('placeholder-img')) {
-                        placeholder.style.display = 'flex';
-                    }
-                });
-            });
-        });
-
         // Carrossel de Produtos
         document.addEventListener('DOMContentLoaded', function() {
             const carouselContainer = document.getElementById('carousel-container');
+            const carouselPrev = document.getElementById('carousel-prev');
+            const carouselNext = document.getElementById('carousel-next');
+            const carouselDots = document.getElementById('carousel-dots');
+            
             const slides = document.querySelectorAll('.product-slide');
-            const prevBtn = document.getElementById('carousel-prev');
-            const nextBtn = document.getElementById('carousel-next');
-            const dotsContainer = document.getElementById('carousel-dots');
-            
-            let currentSlide = 0;
             const totalSlides = slides.length;
+            let currentSlide = 0;
             
-            // Criar dots
-            slides.forEach((_, index) => {
+            // Criar dots do carrossel
+            for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('button');
                 dot.classList.add('carousel-dot');
-                if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                carouselDots.appendChild(dot);
+            }
             
+            // Função para ir para um slide específico
             function goToSlide(slideIndex) {
                 currentSlide = slideIndex;
-                carouselContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+                carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
                 
-                // Atualizar dots
+                // Atualizar dots ativos
                 document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === slideIndex);
+                    dot.classList.toggle('active', index === currentSlide);
                 });
             }
             
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                goToSlide(currentSlide);
-            }
-            
-            function prevSlide() {
+            // Event listeners para navegação
+            carouselPrev.addEventListener('click', () => {
                 currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
                 goToSlide(currentSlide);
+            });
+            
+            carouselNext.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                goToSlide(currentSlide);
+            });
+            
+            // Montador de Cardápio
+            const menuTabs = document.querySelectorAll('.menu-tab');
+            const menuCategories = document.querySelectorAll('.menu-categories');
+            const foodOptions = document.querySelectorAll('.food-option');
+            const selectedItemsContainer = document.getElementById('selected-items');
+            const totalCaloriesElement = document.getElementById('total-calories');
+            const resetMenuButton = document.getElementById('reset-menu');
+            
+            let selectedItems = [];
+            let totalCalories = 0;
+            
+            // Alternar entre categorias do cardápio
+            menuTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const category = tab.getAttribute('data-category');
+                    
+                    // Ativar tab
+                    menuTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Mostrar categoria correspondente
+                    menuCategories.forEach(cat => {
+                        cat.classList.remove('active');
+                        if (cat.id === category) {
+                            cat.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Selecionar opções de comida
+            foodOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const name = option.getAttribute('data-name');
+                    const calories = parseInt(option.getAttribute('data-calories'));
+                    
+                    // Alternar seleção
+                    option.classList.toggle('selected');
+                    
+                    if (option.classList.contains('selected')) {
+                        // Adicionar item
+                        selectedItems.push({ name, calories });
+                        totalCalories += calories;
+                    } else {
+                        // Remover item
+                        const index = selectedItems.findIndex(item => item.name === name);
+                        if (index !== -1) {
+                            totalCalories -= selectedItems[index].calories;
+                            selectedItems.splice(index, 1);
+                        }
+                    }
+                    
+                    updateMenuPreview();
+                });
+            });
+            
+            // Atualizar preview do cardápio
+            function updateMenuPreview() {
+                // Limpar container
+                selectedItemsContainer.innerHTML = '';
+                
+                // Adicionar itens selecionados
+                selectedItems.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('selected-item');
+                    itemElement.textContent = `${item.name} (${item.calories} kcal)`;
+                    selectedItemsContainer.appendChild(itemElement);
+                });
+                
+                // Atualizar total de calorias
+                totalCaloriesElement.textContent = `${totalCalories} kcal`;
             }
             
-            // Event listeners
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-            
-            // Auto-advance (opcional)
-            setInterval(nextSlide, 5000);
-            
-            // Handle missing product images
-            const productImages = document.querySelectorAll('.product-image');
-            productImages.forEach(img => {
-                img.addEventListener('error', function() {
-                    this.style.backgroundImage = 'linear-gradient(135deg, var(--primary), var(--primary-dark))';
-                    this.innerHTML = '<div style="color: white; display: flex; align-items: center; justify-content: center; height: 100%; font-size: 1.2rem;">Imagem do Produto</div>';
+            // Reiniciar cardápio
+            resetMenuButton.addEventListener('click', () => {
+                selectedItems = [];
+                totalCalories = 0;
+                
+                // Desselecionar todas as opções
+                foodOptions.forEach(option => {
+                    option.classList.remove('selected');
                 });
+                
+                updateMenuPreview();
+            });
+            
+            // Montador de Rótulo Nutricional
+            const generateLabelButton = document.getElementById('generate-label');
+            
+            generateLabelButton.addEventListener('click', () => {
+                // Obter valores dos campos
+                const productName = document.getElementById('product-name').value || 'Nome do Produto';
+                const productBrand = document.getElementById('product-brand').value || 'Marca';
+                const productWeight = document.getElementById('product-weight').value || 'Peso Líquido';
+                const productIngredients = document.getElementById('product-ingredients').value || 'Lista de ingredientes aparecerá aqui';
+                
+                const calories = document.getElementById('calories').value || '0';
+                const carbohydrates = document.getElementById('carbohydrates').value || '0';
+                const proteins = document.getElementById('proteins').value || '0';
+                const fats = document.getElementById('fats').value || '0';
+                const saturatedFats = document.getElementById('saturated-fats').value || '0';
+                const transFats = document.getElementById('trans-fats').value || '0';
+                const fiber = document.getElementById('fiber').value || '0';
+                const sodium = document.getElementById('sodium').value || '0';
+                
+                // Atualizar preview do rótulo
+                document.getElementById('preview-product-name').textContent = productName;
+                document.getElementById('preview-product-brand').textContent = productBrand;
+                document.getElementById('preview-product-weight').textContent = productWeight;
+                document.getElementById('preview-ingredients').textContent = productIngredients;
+                
+                document.getElementById('preview-calories').textContent = `${calories} kcal`;
+                document.getElementById('preview-carbohydrates').textContent = `${carbohydrates}g`;
+                document.getElementById('preview-proteins').textContent = `${proteins}g`;
+                document.getElementById('preview-fats').textContent = `${fats}g`;
+                document.getElementById('preview-saturated-fats').textContent = `${saturatedFats}g`;
+                document.getElementById('preview-trans-fats').textContent = `${transFats}g`;
+                document.getElementById('preview-fiber').textContent = `${fiber}g`;
+                document.getElementById('preview-sodium').textContent = `${sodium}mg`;
+            });
+            
+            // Chat Widget
+            const chatButton = document.getElementById('chat-button');
+            const chatContainer = document.getElementById('chat-container');
+            const closeChat = document.getElementById('close-chat');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatInput = document.getElementById('chat-input');
+            const sendMessage = document.getElementById('send-message');
+            
+            chatButton.addEventListener('click', () => {
+                chatContainer.style.display = 'flex';
+            });
+            
+            closeChat.addEventListener('click', () => {
+                chatContainer.style.display = 'none';
+            });
+            
+            function addMessage(text, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.classList.add(isUser ? 'user' : 'bot');
+                messageDiv.textContent = text;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            sendMessage.addEventListener('click', () => {
+                const message = chatInput.value.trim();
+                if (message) {
+                    addMessage(message, true);
+                    chatInput.value = '';
+                    
+                    // Resposta automática
+                    setTimeout(() => {
+                        addMessage('Obrigado pela sua mensagem! Nossa equipe entrará em contato em breve.');
+                    }, 1000);
+                }
+            });
+            
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage.click();
+                }
+            });
+            
+            // Formulário de Orçamento
+            const budgetForm = document.getElementById('budget-form');
+            
+            budgetForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Solicitação de orçamento enviada com sucesso! Entraremos em contato em breve.');
+                budgetForm.reset();
             });
         });
     </script>
 </body>
 </html>
-   
