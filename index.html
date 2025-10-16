@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutriMetrics - Soluções em Nutrição</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #2E8B57;
@@ -54,6 +55,12 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
         }
         
         .nav-links {
@@ -77,7 +84,7 @@
         }
         
         .hero {
-            background: linear-gradient(rgba(46, 139, 87, 0.9), rgba(46, 139, 87, 0.8)), url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(46, 139, 87, 0.9), rgba(46, 139, 87, 0.8)), url('assets/images/hero-bg.jpeg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -105,10 +112,23 @@
             text-decoration: none;
             font-weight: 600;
             transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
         }
         
         .btn:hover {
             background-color: #e55a2b;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
         }
         
         section {
@@ -178,15 +198,121 @@
             color: var(--gray);
         }
         
-        .deliverable-item {
-            border-left: 4px solid var(--primary);
-            padding-left: 20px;
-            margin-bottom: 25px;
+        /* Carrossel de Produtos */
+        .products-carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
-        .deliverable-item h4 {
-            margin-bottom: 10px;
-            color: var(--dark);
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .product-slide {
+            min-width: 100%;
+            display: flex;
+            background: white;
+        }
+        
+        .product-image {
+            flex: 1;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-content {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .product-content h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-content .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin: 15px 0;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .product-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .product-features li:before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-nav:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .carousel-prev {
+            left: 20px;
+        }
+        
+        .carousel-next {
+            right: 20px;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .carousel-dot.active {
+            background: var(--primary);
         }
         
         table {
@@ -249,6 +375,154 @@
             margin: 30px 0;
         }
         
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .chat-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .chat-button i {
+            font-size: 1.5rem;
+        }
+        
+        .chat-container {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chat-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            font-size: 0.9rem;
+        }
+        
+        .message.bot {
+            align-self: flex-start;
+            background-color: var(--light-gray);
+            border-bottom-left-radius: 5px;
+        }
+        
+        .message.user {
+            align-self: flex-end;
+            background-color: var(--primary);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--light-gray);
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .chat-input button {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
         footer {
             background-color: var(--dark);
             color: white;
@@ -278,12 +552,41 @@
             color: white;
         }
         
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: var(--light-gray);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: white;
+        }
+        
         .copyright {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: var(--light-gray);
             font-size: 0.9rem;
+        }
+        
+        .placeholder-img {
+            width: 150px;
+            height: 150px;
+            background-color: #e9ecef;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            border: 5px solid var(--light-gray);
         }
         
         @media (max-width: 768px) {
@@ -306,6 +609,24 @@
             section {
                 padding: 50px 0;
             }
+            
+            .chat-container {
+                width: 300px;
+                height: 400px;
+            }
+            
+            .product-slide {
+                flex-direction: column;
+            }
+            
+            .product-image {
+                min-height: 250px;
+            }
+            
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -313,12 +634,16 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <div class="logo">NutriMetrics</div>
+                <div class="logo">
+                    <i class="fas fa-apple-alt"></i>
+                    NutriMetrics
+                </div>
                 <ul class="nav-links">
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#diagnostico">Diagnóstico</a></li>
-                    <li><a href="#entregaveis">Entregáveis</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
                     <li><a href="#metricas">Métricas</a></li>
+                    <li><a href="#orçamento">Orçamento</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
@@ -330,6 +655,7 @@
             <h1>NutriMetrics - Soluções em Nutrição</h1>
             <p>Otimização da presença digital e estruturação do funil comercial para uma startup de nutrição e bem-estar</p>
             <a href="#sobre" class="btn">Conheça o Projeto</a>
+            <a href="#orçamento" class="btn btn-outline" style="margin-left: 10px;">Solicitar Orçamento</a>
         </div>
     </section>
 
@@ -348,7 +674,7 @@
                 <h3>Soluções Oferecidas</h3>
                 <p>Atualmente, a empresa realiza vários tipos de soluções em nutrição:</p>
                 <ul>
-                    <li>Cofre break</li>
+                    <li>Coffee break</li>
                     <li>Consultoria de rotulagem</li>
                     <li>Rotulagem nutricional</li>
                     <li>Ficha técnica de preparo</li>
@@ -386,48 +712,97 @@
         </div>
     </section>
 
-    <section id="entregaveis">
+    <section id="produtos">
         <div class="container">
             <div class="section-title">
-                <h2>Entregáveis do Case</h2>
-                <p>Principais entregas para solucionar os desafios identificados</p>
+                <h2>Nossos Produtos</h2>
+                <p>Conheça nossas soluções especializadas em nutrição e bem-estar</p>
             </div>
-            <div class="grid">
-                <div class="deliverable-item">
-                    <h4>1. Análise de Clientes</h4>
-                    <p>Análise de clientes potenciais e construção de IOP e Persona</p>
+            
+            <div class="products-carousel">
+                <div class="carousel-container" id="carousel-container">
+                    <!-- Produto 1 -->
+                    <div class="product-slide">
+                        <div class="product-image" style="background-image: url('assets/images/cofre-break.jpeg')"></div>
+                        <div class="product-content">
+                            <h3>Coffee Break</h3>
+                            <p>Serviço completo de análise e desenvolvimento de lanches saudáveis para empresas, com foco em praticidade e valor nutricional.</p>
+                            <div class="price">A partir de R$ 1.200/mês</div>
+                            <ul class="product-features">
+                                <li>Análise nutricional completa</li>
+                                <li>Cardápio personalizado</li>
+                                <li>Consultoria mensal</li>
+                                <li>Relatórios de consumo</li>
+                                <li>Suporte especializado</li>
+                            </ul>
+                            <a href="#orçamento" class="btn">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Produto 2 -->
+                    <div class="product-slide">
+                        <div class="product-image" style="background-image: url('assets/images/consultoria-rotulagem.jpeg')"></div>
+                        <div class="product-content">
+                            <h3>Consultoria de Rotulagem</h3>
+                            <p>Consultoria especializada para adequação de rótulos às normas da ANVISA, garantindo conformidade e transparência.</p>
+                            <div class="price">A partir de R$ 800/projeto</div>
+                            <ul class="product-features">
+                                <li>Análise de conformidade</li>
+                                <li>Adequação à legislação</li>
+                                <li>Consultoria técnica</li>
+                                <li>Revisão de informações</li>
+                                <li>Certificado de conformidade</li>
+                            </ul>
+                            <a href="#orçamento" class="btn">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Produto 3 -->
+                    <div class="product-slide">
+                        <div class="product-image" style="background-image: url('assets/images/rotulagem-nutricional.jpeg')"></div>
+                        <div class="product-content">
+                            <h3>Rotulagem Nutricional</h3>
+                            <p>Serviço completo de análise e elaboração da tabela nutricional para produtos alimentícios.</p>
+                            <div class="price">A partir de R$ 150/produto</div>
+                            <ul class="product-features">
+                                <li>Análise laboratorial</li>
+                                <li>Tabela nutricional completa</li>
+                                <li>Declaração de ingredientes</li>
+                                <li>Alertas de alergênicos</li>
+                                <li>Validade técnica</li>
+                            </ul>
+                            <a href="#orçamento" class="btn">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Produto 4 -->
+                    <div class="product-slide">
+                        <div class="product-image" style="background-image: url('assets/images/products/ficha-tecnica.jpeg')"></div>
+                        <div class="product-content">
+                            <h3>Ficha Técnica de Preparo</h3>
+                            <p>Desenvolvimento de fichas técnicas padronizadas para restaurantes e serviços de alimentação.</p>
+                            <div class="price">A partir de R$ 80/preparação</div>
+                            <ul class="product-features">
+                                <li>Padronização de receitas</li>
+                                <li>Cálculo de custos</li>
+                                <li>Informações nutricionais</li>
+                                <li>Instruções de preparo</li>
+                                <li>Gestão de estoque</li>
+                            </ul>
+                            <a href="#orçamento" class="btn">Solicitar Orçamento</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="deliverable-item">
-                    <h4>2. Análise de Concorrentes</h4>
-                    <p>Conhecer as práticas e o modelo de negócios</p>
-                </div>
-                <div class="deliverable-item">
-                    <h4>3. Fluxograma AS IS e TO BE</h4>
-                    <p>Mapeamento do processo comercial atual e futuro</p>
-                </div>
-                <div class="deliverable-item">
-                    <h4>4. Estruturação Comercial</h4>
-                    <p>Padronização do funil de vendas e abordagem comercial</p>
-                </div>
-                <div class="deliverable-item">
-                    <h4>5. Sugestão de Ferramenta</h4>
-                    <p>Recomendação de ferramenta para controle comercial</p>
-                </div>
-                <div class="deliverable-item">
-                    <h4>6. Análise de Indicadores</h4>
-                    <p>Avaliação dos indicadores de marketing digital</p>
-                </div>
-                <div class="deliverable-item">
-                    <h4>7. Planos de Ação</h4>
-                    <p>Estratégias para redes sociais e melhoria de indicadores</p>
-                </div>
-                <div class="deliverable-item">
-                    <h4>8. Metrificação</h4>
-                    <p>Definição de métricas e metas para acompanhamento</p>
-                </div>
-                <div class="deliverable-item">
-                    <h4>9. Apresentação Final</h4>
-                    <p>Slides e relatório da execução do projeto</p>
+                
+                <button class="carousel-nav carousel-prev" id="carousel-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-nav carousel-next" id="carousel-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="carousel-dots" id="carousel-dots">
+                    <!-- Os dots serão gerados pelo JavaScript -->
                 </div>
             </div>
         </div>
@@ -555,6 +930,55 @@
         </div>
     </section>
 
+    <section id="orçamento">
+        <div class="container">
+            <div class="section-title">
+                <h2>Solicite um Orçamento</h2>
+                <p>Entre em contato conosco para receber uma proposta personalizada</p>
+            </div>
+            <div class="card" style="max-width: 800px; margin: 0 auto;">
+                <form id="budget-form">
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Empresa</label>
+                            <input type="text" id="company" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Serviço de Interesse</label>
+                        <select id="service" class="form-control" required>
+                            <option value="">Selecione um serviço</option>
+                            <option value="cofre-break">Coffee Break</option>
+                            <option value="consultoria-rotulagem">Consultoria de Rotulagem</option>
+                            <option value="rotulagem-nutricional">Rotulagem Nutricional</option>
+                            <option value="ficha-tecnica">Ficha Técnica de Preparo</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" class="form-control" placeholder="Descreva brevemente suas necessidades..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Solicitação</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <section id="equipe">
         <div class="container">
             <div class="section-title">
@@ -563,14 +987,36 @@
             </div>
             <div class="grid">
                 <div class="team-member">
-                    <div style="width: 150px; height: 150px; background-color: #e9ecef; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: var(--gray);">Foto</div>
+                    <img src="assets/images/team/samuel-paes.jpeg" alt="Samuel Paes" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;">
+                        <i class="fas fa-user"></i>
+                    </div>
                     <h4>Samuel Paes</h4>
-                    <p>Analísta de tecnologia</p>
+                    <p>Analista de Tecnologia</p>
                 </div>
                 <div class="team-member">
-                    <div style="width: 150px; height: 150px; background-color: #e9ecef; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: var(--gray);">Foto</div>
+                    <img src="assets/images/team/isabella-goes.jpeg" alt="Isabella Goes" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;">
+                        <i class="fas fa-user"></i>
+                    </div>
                     <h4>Isabella Goes</h4>
-                    <p>Analista de Metricas</p>
+                    <p>Analista de Métricas</p>
+                </div>
+                <div class="team-member">
+                    <img src="assets/images/team/carlos-mendes.jpeg" alt="Carlos Mendes" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Carlos Mendes</h4>
+                    <p>Especialista em Nutrição</p>
+                </div>
+                <div class="team-member">
+                    <img src="assets/images/team/ana-silva.jpeg" alt="Ana Silva" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-img" style="display:none;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Ana Silva</h4>
+                    <p>Consultora de Marketing</p>
                 </div>
             </div>
         </div>
@@ -582,19 +1028,26 @@
                 <div class="footer-column">
                     <h3>NutriMetrics</h3>
                     <p>Startup de consultoria em nutrição e bem-estar, sediada em Belo Horizonte.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
                 <div class="footer-column">
                     <h3>Contato</h3>
-                    <p>Email: contato@nutrimetrics.com.br</p>
-                    <p>Telefone: (31) 99999-9999</p>
-                    <p>Endereço: Belo Horizonte, MG</p>
+                    <p><i class="fas fa-envelope"></i> Email: contato@nutrimetrics.com.br</p>
+                    <p><i class="fas fa-phone"></i> Telefone: (31) 99999-9999</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Endereço: Belo Horizonte, MG</p>
                 </div>
                 <div class="footer-column">
                     <h3>Links Rápidos</h3>
                     <a href="#sobre">Sobre</a>
                     <a href="#diagnostico">Diagnóstico</a>
-                    <a href="#entregaveis">Entregáveis</a>
+                    <a href="#produtos">Produtos</a>
                     <a href="#metricas">Métricas</a>
+                    <a href="#orçamento">Orçamento</a>
                 </div>
             </div>
             <div class="copyright">
@@ -602,6 +1055,28 @@
             </div>
         </div>
     </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-button" id="chat-toggle">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-container" id="chat-container">
+            <div class="chat-header">
+                <h3>Atendimento NutriMetrics</h3>
+                <button class="close-chat" id="close-chat"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    Olá! Como posso ajudar você hoje?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Digite sua mensagem...">
+                <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Smooth scrolling for anchor links
@@ -621,6 +1096,128 @@
                 }
             });
         });
+
+        // Chat Widget Functionality
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatContainer = document.getElementById('chat-container');
+        const closeChat = document.getElementById('close-chat');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendMessage = document.getElementById('send-message');
+
+        chatToggle.addEventListener('click', () => {
+            chatContainer.style.display = 'flex';
+        });
+
+        closeChat.addEventListener('click', () => {
+            chatContainer.style.display = 'none';
+        });
+
+        sendMessage.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                chatInput.value = '';
+                
+                // Simulate bot response after a short delay
+                setTimeout(() => {
+                    addMessage('Obrigado pela sua mensagem! Nossa equipe entrará em contato em breve.', 'bot');
+                }, 1000);
+            }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage.click();
+            }
+        });
+
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Form Submission
+        document.getElementById('budget-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pelo seu interesse! Entraremos em contato em breve com um orçamento personalizado.');
+            this.reset();
+        });
+
+        // Handle missing images
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamImages = document.querySelectorAll('.team-member img');
+            teamImages.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const placeholder = this.nextElementSibling;
+                    if (placeholder && placeholder.classList.contains('placeholder-img')) {
+                        placeholder.style.display = 'flex';
+                    }
+                });
+            });
+        });
+
+        // Carrossel de Produtos
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselContainer = document.getElementById('carousel-container');
+            const slides = document.querySelectorAll('.product-slide');
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+            const dotsContainer = document.getElementById('carousel-dots');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            // Criar dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            
+            function goToSlide(slideIndex) {
+                currentSlide = slideIndex;
+                carouselContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+                
+                // Atualizar dots
+                document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === slideIndex);
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                goToSlide(currentSlide);
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                goToSlide(currentSlide);
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Auto-advance (opcional)
+            setInterval(nextSlide, 5000);
+            
+            // Handle missing product images
+            const productImages = document.querySelectorAll('.product-image');
+            productImages.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.backgroundImage = 'linear-gradient(135deg, var(--primary), var(--primary-dark))';
+                    this.innerHTML = '<div style="color: white; display: flex; align-items: center; justify-content: center; height: 100%; font-size: 1.2rem;">Imagem do Produto</div>';
+                });
+            });
+        });
     </script>
 </body>
 </html>
+   
