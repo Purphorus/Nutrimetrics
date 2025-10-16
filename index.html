@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriMetrics - Case de Marketing</title>
+    <style>
+        :root {
+            --primary: #2E8B57;
+            --primary-dark: #1e6b46;
+            --secondary: #FF6B35;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(46, 139, 87, 0.9), rgba(46, 139, 87, 0.8)), url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e55a2b;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 5px solid var(--light-gray);
+        }
+        
+        .team-member h4 {
+            margin-bottom: 5px;
+        }
+        
+        .team-member p {
+            color: var(--gray);
+        }
+        
+        .deliverable-item {
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .deliverable-item h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .metric-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .metric-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .chart-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: var(--light-gray);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+            }
+            
+            .nav-links li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">NutriMetrics</div>
+                <ul class="nav-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#diagnostico">Diagnóstico</a></li>
+                    <li><a href="#entregaveis">Entregáveis</a></li>
+                    <li><a href="#metricas">Métricas</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Case de Marketing - NutriMetrics</h1>
+            <p>Otimização da presença digital e estruturação do funil comercial para uma startup de nutrição e bem-estar</p>
+            <a href="#sobre" class="btn">Conheça o Projeto</a>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container">
+            <div class="section-title">
+                <h2>A Empresa</h2>
+                <p>A NutriMetrics é uma startup de consultoria em nutrição e bem-estar, sediada em Belo Horizonte</p>
+            </div>
+            <div class="card">
+                <h3>Missão e Visão</h3>
+                <p>A NutriMetrics foi fundada por um grupo de nutricionistas inovadores com a missão de democratizar o acesso a planos alimentares personalizados e cientificamente embasados, utilizando a tecnologia como principal ferramenta.</p>
+                <p>Movidos pelo desejo de combater a desinformação na área de saúde e oferecer soluções acessíveis, eles criaram um negócio com foco no digital e alto potencial de escalabilidade.</p>
+            </div>
+            <div class="card">
+                <h3>Soluções Oferecidas</h3>
+                <p>Atualmente, a empresa realiza vários tipos de soluções em nutrição:</p>
+                <ul>
+                    <li>Cofre break</li>
+                    <li>Consultoria de rotulagem</li>
+                    <li>Rotulagem nutricional</li>
+                    <li>Ficha técnica de preparo</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="diagnostico" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Diagnóstico</h2>
+                <p>Principais desafios identificados na estrutura comercial e de marketing</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Estrutura Comercial</h3>
+                    <p>Com a equipe de nutricionistas e vendedores em crescimento, a estrutura comercial não está padronizada. A falta de um funil de vendas claro e de scripts definidos resulta em inconsistência na abordagem com leads e prejudica o controle da qualidade na entrega dos serviços.</p>
+                </div>
+                <div class="card">
+                    <h3>Marketing Digital</h3>
+                    <p>A NutriMetrics realiza investimentos significativos em marketing digital, mas sofre para correlacionar o investimento ao resultado (ROI). A coleta e análise dos indicadores digitais são precárias, levando a decisões pouco informadas e desperdício de recursos.</p>
+                </div>
+                <div class="card">
+                    <h3>Desafios Específicos</h3>
+                    <ul>
+                        <li>Sensibilidade ao preço por parte dos leads</li>
+                        <li>Problemas de comunicação (ghosting)</li>
+                        <li>Lentidão na conversão</li>
+                        <li>Qualidade dos leads</li>
+                        <li>Dificuldade em operar Meta Ads</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="entregaveis">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entregáveis do Case</h2>
+                <p>Principais entregas para solucionar os desafios identificados</p>
+            </div>
+            <div class="grid">
+                <div class="deliverable-item">
+                    <h4>1. Análise de Clientes</h4>
+                    <p>Análise de clientes potenciais e construção de IOP e Persona</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>2. Análise de Concorrentes</h4>
+                    <p>Conhecer as práticas e o modelo de negócios</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>3. Fluxograma AS IS e TO BE</h4>
+                    <p>Mapeamento do processo comercial atual e futuro</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>4. Estruturação Comercial</h4>
+                    <p>Padronização do funil de vendas e abordagem comercial</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>5. Sugestão de Ferramenta</h4>
+                    <p>Recomendação de ferramenta para controle comercial</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>6. Análise de Indicadores</h4>
+                    <p>Avaliação dos indicadores de marketing digital</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>7. Planos de Ação</h4>
+                    <p>Estratégias para redes sociais e melhoria de indicadores</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>8. Metrificação</h4>
+                    <p>Definição de métricas e metas para acompanhamento</p>
+                </div>
+                <div class="deliverable-item">
+                    <h4>9. Apresentação Final</h4>
+                    <p>Slides e relatório da execução do projeto</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="metricas" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Métricas de Marketing Digital</h2>
+                <p>Análise dos indicadores de performance dos últimos meses</p>
+            </div>
+            
+            <div class="chart-container">
+                <h3>Indicadores Mensais</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mês</th>
+                            <th>Investimento (R$)</th>
+                            <th>Impressões</th>
+                            <th>Cliques</th>
+                            <th>CPC (R$)</th>
+                            <th>CTR (%)</th>
+                            <th>Leads</th>
+                            <th>CPL (R$)</th>
+                            <th>Conversão (%)</th>
+                            <th>ROI (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Janeiro</td>
+                            <td>5.000</td>
+                            <td>150.000</td>
+                            <td>4.500</td>
+                            <td>1,11</td>
+                            <td>3,00</td>
+                            <td>120</td>
+                            <td>41,67</td>
+                            <td>2,67</td>
+                            <td>60,00</td>
+                        </tr>
+                        <tr>
+                            <td>Fevereiro</td>
+                            <td>6.500</td>
+                            <td>180.000</td>
+                            <td>5.500</td>
+                            <td>1,18</td>
+                            <td>3,06</td>
+                            <td>150</td>
+                            <td>43,33</td>
+                            <td>2,73</td>
+                            <td>61,54</td>
+                        </tr>
+                        <tr>
+                            <td>Março</td>
+                            <td>8.000</td>
+                            <td>200.000</td>
+                            <td>7.000</td>
+                            <td>1,14</td>
+                            <td>3,50</td>
+                            <td>180</td>
+                            <td>44,44</td>
+                            <td>2,57</td>
+                            <td>62,50</td>
+                        </tr>
+                        <tr>
+                            <td>Abril</td>
+                            <td>9.500</td>
+                            <td>210.000</td>
+                            <td>7.800</td>
+                            <td>1,22</td>
+                            <td>3,71</td>
+                            <td>210</td>
+                            <td>45,24</td>
+                            <td>2,69</td>
+                            <td>52,63</td>
+                        </tr>
+                        <tr>
+                            <td>Maio</td>
+                            <td>11.000</td>
+                            <td>220.000</td>
+                            <td>8.500</td>
+                            <td>1,29</td>
+                            <td>3,86</td>
+                            <td>230</td>
+                            <td>47,83</td>
+                            <td>2,71</td>
+                            <td>40,91</td>
+                        </tr>
+                        <tr>
+                            <td>Junho</td>
+                            <td>10.500</td>
+                            <td>215.000</td>
+                            <td>8.200</td>
+                            <td>1,28</td>
+                            <td>3,81</td>
+                            <td>225</td>
+                            <td>46,67</td>
+                            <td>2,74</td>
+                            <td>42,86</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">R$ 8.083</div>
+                    <div class="metric-label">Investimento Médio Mensal</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">186</div>
+                    <div class="metric-label">Leads Médios por Mês</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">R$ 44,86</div>
+                    <div class="metric-label">Custo Médio por Lead</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">53,24%</div>
+                    <div class="metric-label">ROI Médio</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipe">
+        <div class="container">
+            <div class="section-title">
+                <h2>A Equipe</h2>
+                <p>Profissionais responsáveis pelo desenvolvimento do projeto</p>
+            </div>
+            <div class="grid">
+                <div class="team-member">
+                    <div style="width: 150px; height: 150px; background-color: #e9ecef; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: var(--gray);">Foto</div>
+                    <h4>Samuel Paes</h4>
+                    <p>Analísta de tecnologia</p>
+                </div>
+                <div class="team-member">
+                    <div style="width: 150px; height: 150px; background-color: #e9ecef; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: var(--gray);">Foto</div>
+                    <h4>Isabella Goes</h4>
+                    <p>Analista de Metricas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NutriMetrics</h3>
+                    <p>Startup de consultoria em nutrição e bem-estar, sediada em Belo Horizonte.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <p>Email: contato@nutrimetrics.com.br</p>
+                    <p>Telefone: (31) 99999-9999</p>
+                    <p>Endereço: Belo Horizonte, MG</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#diagnostico">Diagnóstico</a>
+                    <a href="#entregaveis">Entregáveis</a>
+                    <a href="#metricas">Métricas</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 NutriMetrics. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
